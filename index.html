@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pez Perro | Official</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+:root{
+--red-dark:#22ff7a;
+
+
+
+}
+
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Inter,system-ui,-apple-system,sans-serif;
+}
+
+/* =========================
+   FONDO GLOBAL PRO
+========================= */
+body{
+  color:#fff;
+  background:#121212;
+  position:relative;
+  min-height:100vh;
+}
+
+/* fondo fijo */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.92)),
+    url("img/wall5.jpg")
+    center/cover no-repeat;
+  z-index:-1;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+  padding:80px 20px 40px;
+  text-align:center;
+  backdrop-filter:blur(2px);
+}
+
+.logo{
+  width:180px;
+  height:auto;
+  max-height:180px;
+  object-fit:contain;
+  margin-bottom:18px;
+  filter:drop-shadow(0 10px 25px rgba(0,0,0,.6));
+}
+
+.band-name{
+  font-size:48px;
+  font-weight:800;
+}
+
+.band-sub{
+  opacity:.7;
+  margin-top:6px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:0 16px 40px;
+}
+
+/* =========================
+   CARD
+========================= */
+.card{
+  background:rgba(24,24,24,.85);
+  backdrop-filter:blur(10px);
+  border-radius:18px;
+  padding:20px;
+  margin-top:20px;
+  box-shadow:0 10px 40px rgba(0,0,0,.6);
+  border:1px solid rgba(255,255,255,.05);
+}
+
+.section-title{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:16px;
+  color:var(--red-dark);
+}
+
+/* =========================
+   SPOTIFY
+========================= */
+.spotify iframe{
+  width:100%;
+  border-radius:12px;
+}
+
+/* =========================
+   GALERIA
+========================= */
+.slide-main{
+  width:100%;
+  height:400px;
+  border-radius:14px;
+  object-fit:cover;
+  margin-bottom:10px;
+  transition:.35s;
+}
+
+.thumbs{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:4px;
+}
+
+.thumbs img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:8px;
+  opacity:.6;
+  cursor:pointer;
+  flex:0 0 auto;
+  transition:.25s;
+}
+
+.thumbs img.active,
+.thumbs img:hover{
+  opacity:1;
+  outline:2px solid #1ed760;
+  transform:scale(1.05);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.portfolio-btn{
+  display:block;
+  margin-top:16px;
+  text-align:center;
+  background:var(--red-dark);
+  color:#000;
+  font-weight:700;
+  padding:14px;
+  border-radius:999px;
+  text-decoration:none;
+  transition:.25s;
+}
+
+.portfolio-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(30,215,96,.35);
+}
+
+/* =========================
+   YOUTUBE
+========================= */
+.youtube iframe{
+  width:100%;
+  height:220px;
+  border-radius:12px;
+}
+
+/* =========================
+   MERCH
+========================= */
+.merch-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+@media(min-width:600px){
+  .merch-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+.product{
+  background:#202020;
+  border-radius:14px;
+  padding:14px;
+  transition:.25s;
+  border:1px solid rgba(255,255,255,.05);
+}
+
+.product:hover{
+  transform:translateY(-4px);
+  border-color:#1ed760;
+}
+
+.product img{
+  width:100%;
+  height:400px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.product-title{
+  font-weight:700;
+  margin-bottom:4px;
+}
+
+.product-price{
+  color:#1ed760;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.buy-btn{
+  display:block;
+  text-align:center;
+  background:#1ed760;
+  color:#000;
+  padding:10px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+
+.buy-btn:hover{
+  background:#1ed760;
+}
+
+/* =========================
+   REDES
+========================= */
+.socials{
+  display:grid;
+  gap:12px;
+}
+
+.social{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 16px;
+  border-radius:12px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(6px);
+  text-decoration:none;
+  color:#fff;
+  transition:.25s;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.social:hover{
+  background:rgba(30,215,96,.15);
+  transform:translateY(-2px);
+}
+
+.social-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:600;
+}
+
+.social-left i{
+  color:#1ed760;
+  width:20px;
+  text-align:center;
+}
+
+.social-right{
+  opacity:.75;
+  font-size:14px;
+}
+
+
+
+
+.events{
+  display:grid;
+  gap:12px;
+}
+
+.event{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#202020;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.05);
+}
+
+.event-left{
+  font-weight:700;
+}
+
+.event-right{
+  font-size:13px;
+  opacity:.7;
+  text-align:right;
+}
+
+
+
+/* =========================
+   CONTACTO FINAL
+========================= */
+.contact-cta{
+  display:grid;
+  gap:14px;
+}
+
+.cta-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:16px;
+  border-radius:999px;
+  font-weight:700;
+  text-decoration:none;
+  font-size:16px;
+}
+
+.cta-email{
+  background:#1ed760;
+  color:#000;
+}
+
+.cta-whatsapp{
+  background:#25D366;
+  color:#000;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer{
+  text-align:center;
+  padding:30px 20px 40px;
+  opacity:.5;
+  font-size:13px;
+}
+
+
+
+/* =========================
+   DESKTOP
+========================= */
+@media (max-width:4000px){
+  .band-name{font-size:60px;}
+  .slide-main{height:380px;}
+  .youtube iframe{height:315px;}
+  .logo{width:260px;}
+  .product img{
+    height: 400px;
+  }
+    .slide-main{
+    height: 400px;
+  }
+
+}
+
+
+@media (max-width:780px){
+
+  .logo{
+    width: 222px;
+  }
+
+  .product img{
+    height: 400px;
+  }
+  .card{
+    padding: 12px;
+  }
+  .slide-main{
+    height: 400px;
+  }
+}
+
+
+@media (max-width:400px){
+
+  .logo{
+    width: 222px;
+  }
+
+  .product img{
+    height: 200px;
+  }
+  .card{
+    padding: 12px;
+  }
+  .slide-main{
+    height: 220px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <img src="img/pezperro-logotipo.svg" class="logo" alt="pez-perro logo">
+
+</section>
+
+<div class="container">
+
+  <!-- SPOTIFY -->
+  <div class="card spotify">
+    <div class="section-title">Escuchar en Spotify</div>
+    <iframe
+      src="https://open.spotify.com/embed/artist/4rZAXJvhRNvpb9kHDLgtxS?utm_source=generator&theme=0"
+      height="352"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+  </div>
+
+
+
+  <!-- CONCIERTOS -->
+  <div class="card">
+    <div class="section-title">Fechas Lanzamiento</div>
+
+    <div class="events">
+      <div class="event">
+        <div class="event-left">San José de la Mariquina</div>
+        <div class="event-right">Plaza<br>18:00<br>16/03/2026</div>
+      </div>
+
+      <div class="event">
+        <div class="event-left">Lanco</div>
+        <div class="event-right">Gimnasio Municipal<br>20:30<br>05/04/2026</div>
+      </div>
+
+      <div class="event">
+        <div class="event-left">Valdivia</div>
+        <div class="event-right">Teatro Lord Cochrane<br>21:00<br>19/04/2026</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MERCH -->
+  <div class="card">
+    <div class="section-title">Merch Oficial</div>
+
+    <div class="merch-grid">
+
+
+      <div class="product">
+        <img src="img/cd.png">
+        <div class="product-title">Disco Físico</div>
+        <div class="product-price">$10.000 CLP</div>
+
+        <a href="https://wa.me/56931245075?text=Hola%20quiero%20comprar%20el%20disco%20de%20Pez%20Perro%20de%20$10.000"
+           class="buy-btn"
+           target="_blank">
+           Comprar
+        </a>
+
+
+      </div>
+
+
+
+      <div class="product">
+        <img src="img/polera.png">
+        <div class="product-title">Polera Pez-Perro</div>
+        <div class="product-price">$15.000 CLP</div>
+
+        <a href="https://wa.me/56931245075?text=Hola%20quiero%20comprar%20la%20polera%20de%20Pez%20Perro%20de%20$15.000"
+           class="buy-btn"
+           target="_blank">
+           Comprar
+        </a>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <!-- GALERIA-->
+
+  <div class="card">
+    <div class="section-title">Galería</div>
+
+    <img id="mainSlide" class="slide-main" src="img/wall3.jpg">
+
+    <div class="thumbs">
+      <img class="active" src="img/wall3.jpg" onclick="changeSlide(this)">
+      <img src="img/wall6.jpg" onclick="changeSlide(this)">
+      <img src="img/wall9.jpg" onclick="changeSlide(this)">
+      <img src="img/wall1.jpg" onclick="changeSlide(this)">
+      <img src="img/wall8.jpg" onclick="changeSlide(this)">
+
+    </div>
+
+  </div> 
+
+
+  <!-- REDES -->
+  <div class="card">
+    <div class="section-title">Redes</div>
+
+    <div class="socials">
+      <a href="https://www.facebook.com/pezperrobanda/?locale=es_LA" target="_blank" class="social">
+        <div class="social-left"><i class="fab fa-facebook-f"></i> Facebook</div>
+        <div class="social-right">/pezperrobanda</div>
+      </a>
+
+      <a href="https://www.instagram.com/pezperroficial" target="_blank" class="social">
+        <div class="social-left"><i class="fab fa-instagram"></i> Instagram</div>
+        <div class="social-right">@pezperroficial</div>
+      </a>
+
+      <a href="https://soundcloud.com/pezperro" target="_blank" class="social">
+        <div class="social-left"><i class="fab fa-soundcloud"></i> SoundCloud</div>
+        <div class="social-right">pezperro</div>
+      </a>
+
+      <a href="https://www.youtube.com/channel/UCtzWyRXUAt4nWAMyQCqRmuA" target="_blank" class="social">
+        <div class="social-left"><i class="fab fa-youtube"></i> YouTube</div>
+        <div class="social-right">Canal oficial</div>
+      </a>
+
+      <a href="https://open.spotify.com/artist/4rZAXJvhRNvpb9kHDLgtxS" target="_blank" class="social">
+        <div class="social-left"><i class="fab fa-spotify"></i> Spotify</div>
+        <div class="social-right">Perfil artista</div>
+      </a>
+    </div>
+  </div>
+
+
+
+  <!-- CONTACTO FINAL -->
+  <div class="card">
+    <div class="section-title">Contacto Directo</div>
+
+    <div class="contact-cta">
+      <a href="mailto:bandapezperro@gmail.com" class="cta-btn cta-email">
+        <i class="fa-solid fa-envelope"></i>
+         Email
+      </a>
+
+      <a href="https://wa.me/56931245075?text=Hola%20contacto%20Pez-Perro%" class="cta-btn cta-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+
+
+</div>
+<section class="hero">
+  <img src="img/pezperro-logotipo.svg" class="logo" alt="pez-perro logo">
+
+</section>
+<div class="footer">© 2026 Pez Perro</div>
+
+<script>
+function changeSlide(el){
+  document.getElementById("mainSlide").src = el.src;
+  document.querySelectorAll(".thumbs img").forEach(i=>i.classList.remove("active"));
+  el.classList.add("active");
+}
+</script>
+
+</body>
+</html>
